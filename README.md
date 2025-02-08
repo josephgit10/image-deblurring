@@ -53,3 +53,41 @@ source deblur-env/bin/activate
 # On Windows:
 python -m venv deblur-env
 deblur-env\Scripts\activate
+```
+
+## Training the Model
+
+The model is trained using the Adam optimizer with a learning rate of `1e-4` (betas: 0.5, 0.999) for 20 epochs by default. A learning rate scheduler (ReduceLROnPlateau) is used to reduce the learning rate if the validation loss plateaus, and early stopping is applied with a patience of 3 epochs.
+
+### Training Steps
+
+1. **Prepare the Dataset:**  
+   Organize your curated deblurring datasets in the following structure:
+<parent_dir>/ └── DBlur/ ├── GoPro/ │ ├── train/ │ │ ├── blur/ │ │ └── sharp/ │ └── test/ │ ├── blur/ │ └── sharp/ ├── CelebA/ │ ├── train/ │ │ ├── blur/ │ │ └── sharp/ │ ├── test/ │ │ ├── blur/ │ │ └── sharp/ │ └── validation/ │ ├── blur/ │ └── sharp/ ├── HIDE/ ├── RealBlur_J/ ├── RealBlur_R/ ├── TextOCR/ ├── Wider-Face/ └── ... (additional datasets)
+
+2. **Update the Parent Directory:**  
+In your code (e.g., in `train_deblur.py` or your Jupyter Notebook), update the `parent_dir` variable to point to your local dataset directory. For example:
+```python
+parent_dir = "./data/DBlur"
+```
+3. **Run the Training Script or Notebook:**
+Save your code as train_deblur.py and run:
+```bash
+Copy
+python train_deblur.py
+```
+Open your notebook and run the cells sequentially.
+
+## Running Locally
+To run the project on your local machine (outside of Kaggle), follow these steps:
+
+1. **Set Up Your Environment:**
+
+Create a virtual environment (recommended):
+```python
+python -m venv deblur-env
+# On Linux/Mac:
+source deblur-env/bin/activate
+# On Windows:
+deblur-env\Scripts\activate
+```
