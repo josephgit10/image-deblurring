@@ -63,31 +63,7 @@ The model is trained using the Adam optimizer with a learning rate of `1e-4` (be
 
 1. **Prepare the Dataset:**  
    Organize your curated deblurring datasets in the following structure:
-<parent_dir>/
-└── DBlur/
-    ├── GoPro/
-    │   ├── train/
-    │   │   ├── blur/
-    │   │   └── sharp/
-    │   └── test/
-    │       ├── blur/
-    │       └── sharp/
-    ├── CelebA/
-    │   ├── train/
-    │   │   ├── blur/
-    │   │   └── sharp/
-    │   ├── test/
-    │   │   ├── blur/
-    │   │   └── sharp/
-    │   └── validation/
-    │       ├── blur/
-    │       └── sharp/
-    ├── HIDE/
-    ├── RealBlur_J/
-    ├── RealBlur_R/
-    ├── TextOCR/
-    ├── Wider-Face/
-    └── ... (additional datasets)
+<parent_dir>/<dataset>/<blur>/<train><test>, <sharp>/<train><test>
 
 
 3. **Update the Parent Directory:**  
