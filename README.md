@@ -92,7 +92,4 @@ Open your notebook and run the cells sequentially.
 10. Refinement: Residual refinement block in the decoder
 11. Mixed Precision: Enabled via torch.amp
 
-This project builds on state-of-the-art techniques in image deblurring and leverages PyTorch and torchvision for model development and training. With higher epochs and increased training resolution for a higher batch size, the current PSNR and SSIM values of:
-Average PSNR: 23.4706
-Average SSIM: 0.6929
-can be increased to Average PSNR values of 30+db and SSIM values ~0.85+
+This project builds on state-of-the-art techniques in image deblurring, leveraging PyTorch and torchvision for model development and training. With increased training epochs, higher resolutions, and larger batch sizes, the current performance metrics of Average PSNR: 23.4706 and Average SSIM: 0.6929 can potentially improve to PSNR values of 30+ dB and SSIM values of ~0.85, achieving high-quality deblurring results.
