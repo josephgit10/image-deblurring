@@ -63,9 +63,34 @@ The model is trained using the Adam optimizer with a learning rate of `1e-4` (be
 
 1. **Prepare the Dataset:**  
    Organize your curated deblurring datasets in the following structure:
-<parent_dir>/ └── DBlur/ ├── GoPro/ │ ├── train/ │ │ ├── blur/ │ │ └── sharp/ │ └── test/ │ ├── blur/ │ └── sharp/ ├── CelebA/ │ ├── train/ │ │ ├── blur/ │ │ └── sharp/ │ ├── test/ │ │ ├── blur/ │ │ └── sharp/ │ └── validation/ │ ├── blur/ │ └── sharp/ ├── HIDE/ ├── RealBlur_J/ ├── RealBlur_R/ ├── TextOCR/ ├── Wider-Face/ └── ... (additional datasets)
+<parent_dir>/
+└── DBlur/
+    ├── GoPro/
+    │   ├── train/
+    │   │   ├── blur/
+    │   │   └── sharp/
+    │   └── test/
+    │       ├── blur/
+    │       └── sharp/
+    ├── CelebA/
+    │   ├── train/
+    │   │   ├── blur/
+    │   │   └── sharp/
+    │   ├── test/
+    │   │   ├── blur/
+    │   │   └── sharp/
+    │   └── validation/
+    │       ├── blur/
+    │       └── sharp/
+    ├── HIDE/
+    ├── RealBlur_J/
+    ├── RealBlur_R/
+    ├── TextOCR/
+    ├── Wider-Face/
+    └── ... (additional datasets)
 
-2. **Update the Parent Directory:**  
+
+3. **Update the Parent Directory:**  
 In your code (e.g., in `train_deblur.py` or your Jupyter Notebook), update the `parent_dir` variable to point to your local dataset directory. For example:
 ```python
 parent_dir = "./data/DBlur"
@@ -78,16 +103,17 @@ python train_deblur.py
 ```
 Open your notebook and run the cells sequentially.
 
-## Running Locally
-To run the project on your local machine (outside of Kaggle), follow these steps:
+## Hyperparameters
+1. Epochs: 20
+2. Batch Size: 4 (for training), 1 (for evaluation)
+3. Learning Rate: 1e-4 (Adam, betas: 0.5, 0.999)
+4. Early Stopping Patience: 3 epochs
+5. LR Scheduler: ReduceLROnPlateau (factor: 0.5, patience: 2)
+6. Base Channel Dimension: 64 (increase to boost capacity)
+7. Transformer Settings: 2 layers with 4 heads
+8. Loss: L1 Loss + Perceptual Loss (weighted by 0.1)
+9. Upsampling: Bicubic interpolation
+10. Refinement: Residual refinement block in the decoder
+11. Mixed Precision: Enabled via torch.amp
 
-1. **Set Up Your Environment:**
-
-Create a virtual environment (recommended):
-```python
-python -m venv deblur-env
-# On Linux/Mac:
-source deblur-env/bin/activate
-# On Windows:
-deblur-env\Scripts\activate
-```
+This project builds on state-of-the-art techniques in image deblurring and leverages PyTorch and torchvision for model development and training.
